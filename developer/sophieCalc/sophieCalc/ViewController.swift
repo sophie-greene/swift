@@ -9,11 +9,11 @@
 import UIKit
 //child: parent inheritance 
 class ViewController: UIViewController {
-    var userIsIntheMiddleOfTyping = false
+    private var userIsIntheMiddleOfTyping = false
     
-    @IBOutlet weak var display: UILabel!
+    @IBOutlet weak private var display: UILabel!
     
-    @IBAction func touchDigit(_ sender: UIButton) {
+    @IBAction fileprivate func touchDigit(_ sender: UIButton) {
         let digit = sender.currentTitle!
         if userIsIntheMiddleOfTyping{
             let currentlyDisplayed = display.text!
@@ -23,8 +23,8 @@ class ViewController: UIViewController {
         }
         userIsIntheMiddleOfTyping = true
     }
-
-    var displayValue: Double{
+//computed property
+    private var displayValue: Double{
         get{
             return Double(display.text!)!
         }
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
             display.text = String(newValue)
         }
     }
-    @IBAction func mathOperation(_ sender: UIButton) {
+    @IBAction private func mathOperation(_ sender: UIButton) {
         userIsIntheMiddleOfTyping  = false
         if let mathSymbol = sender.currentTitle{
             if mathSymbol == "π"{
