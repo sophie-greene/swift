@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak private var display: UILabel!
     
-    @IBAction fileprivate func touchDigit(_ sender: UIButton) {
+    @IBAction private func touchDigit(_ sender: UIButton) {
         let digit = sender.currentTitle!
         if userIsIntheMiddleOfTyping{
             let currentlyDisplayed = display.text!
