@@ -7,7 +7,7 @@
 
 //all user interface module
 import UIKit
-//child: parent inheritance 
+//child: parent inheritance
 class ViewController: UIViewController {
     private var userIsIntheMiddleOfTyping = false
     
@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         }
         userIsIntheMiddleOfTyping = true
     }
-//computed property
+    //computed property
     private var displayValue: Double{
         get{
             return Double(display.text!)!
@@ -32,18 +32,20 @@ class ViewController: UIViewController {
             display.text = String(newValue)
         }
     }
+    private var brain = sophieCalcModel()
+    
     @IBAction private func mathOperation(_ sender: UIButton) {
-        userIsIntheMiddleOfTyping  = false
-        if let mathSymbol = sender.currentTitle{
-            if mathSymbol == "π"{
-                //display.text = String(M_PI)
-                displayValue = M_PI
-            }else if mathSymbol=="√"{
-                displayValue = sqrt(displayValue)
-            }
+        if userIsIntheMiddleOfTyping{
+            brain.setOperand(displayValue)
+            userIsIntheMiddleOfTyping  = false
         }
+        
+        if let mathSymbol = sender.currentTitle{
+            brain.performOperation(mathSymbol)
+        }
+        displayValue = brain.result
     }
-
-
+    
+    
 }
 

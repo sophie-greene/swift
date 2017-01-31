@@ -8,17 +8,28 @@
 
 import Foundation
 class sophieCalcModel{
+    
+    var accumulater = 0.0
     func setOperand(_ operand: Double){
-        
+        accumulater = operand
     }
+    var operation: Dictionary<String,Double> = [
+        "π":M_PI,
+        "e": M_E
+    ]
     func performOperation(_ symbol: String){
+        switch symbol{
+        case "π" : accumulater = M_PI
+        case "√" : accumulater = sqrt(accumulater)
+        default:break
+        }
         
     }
-//  readonly computed property
+    //  readonly computed property
     var result:Double{
         get{
-            return 0.0
+            return accumulater
         }
-
+        
     }
 }
